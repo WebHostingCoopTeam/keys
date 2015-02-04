@@ -9,7 +9,7 @@ rm /tmp/gitsshauthorized_keys.new
 cat /tmp/gitsshauthorized_keys|sort|uniq>/tmp/gitsshauthorized_keysuniq
 rm /tmp/gitsshauthorized_keys
 echo 'I will be adding these entries (removing duplicates):'
-diff /tmp/gitsshauthorized_keysuniq /git/.ssh/authorized_keys
+diff /tmp/gitsshauthorized_keysuniq /home/git/.ssh/authorized_keys
 echo -n 'ctrl-C to stop now! or forever hold your peace'
 sleep 1;echo -n '.';sleep 1;echo -n '.';sleep 1;echo -n '.';sleep 1;echo -n '.'
 sleep 1
