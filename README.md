@@ -3,7 +3,13 @@ keys
 
 public keys for coop devops
 
-to addus to your server:
+my add us to your server:
+
+```
+curl https://raw.githubusercontent.com/WebHostingCoopTeam/keys/master/myaddus.sh | bash
+```
+
+or the historical (root specific)
 
 ```
 curl https://raw.githubusercontent.com/WebHostingCoopTeam/keys/master/addus.sh | bash
@@ -12,7 +18,7 @@ curl https://raw.githubusercontent.com/WebHostingCoopTeam/keys/master/addus.sh |
 or use sudo:
 
 ```
-curl https://raw.githubusercontent.com/WebHostingCoopTeam/keys/master/addus.sh | sudo bash
+curl https://raw.githubusercontent.com/WebHostingCoopTeam/keys/master/myaddus.sh | sudo bash
 ```
 
 on an octohost:
