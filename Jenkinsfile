@@ -1,8 +1,41 @@
-// This shows a simple build wrapper example, using the AnsiColorBuildWrapper plugin.
 node {
-    // This is the current syntax for invoking a build wrapper, naming the class.
-    wrap([$class: 'AnsiColorBuildWrapper']) {
-        // Just some echoes to show the ANSI color.
-        stage "\u001B[31mI'm Red\u001B[0m Now not"
+
+
+    currentBuild.result = "SUCCESS"
+
+    try {
+
+       stage 'Checkout'
+
+            checkout scm
+
+       stage 'Test'
+
+            env.NODE_ENV = "test"
+
+            print "Environment will be : ${env.NODE_ENV}"
+
+            sh 'bash testpub.sh'
+
+       stage 'Deploy'
+
+            echo 'ssh to web server and tell it to pull new keys'
+            sh 'ssh coopadmin@192.168.133.88 /usr/local/bin/keyPusher.sh'
+
+       stage 'Cleanup'
+
+            echo 'prune and cleanup'
+            sh 'echo clean'
+
+        }
+
+
+    catch (err) {
+
+        currentBuild.result = "FAILURE"
+
+
+        throw err
     }
+
 }
