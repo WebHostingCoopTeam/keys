@@ -5,7 +5,6 @@ then
 else
     echo 'ssh dir does not exist, please generate it with "ssh-keygen -t ecdsa" for example'
     ssh-keygen -b 521 -N "" -t ecdsa -f $HOME/.ssh/id_ecdsa
-    exit 1
 fi
 echo 'This is for Webhosting.coop dev only, this will add our keys to your server, BEWARE!'
 touch $HOME/.ssh/authorized_keys
