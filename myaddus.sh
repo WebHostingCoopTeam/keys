@@ -4,6 +4,7 @@ then
     echo 'ssh dir exists, proceeding...'
 else
     echo 'ssh dir does not exist, please generate it with "ssh-keygen -t ecdsa" for example'
+    ssh-keygen -tq ecdsa
     exit 1
 fi
 echo 'This is for Webhosting.coop dev only, this will add our keys to your server, BEWARE!'
