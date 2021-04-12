@@ -1,13 +1,1 @@
-hostname: coreos1
-
-coreos:
-    units:
-      - name: 10-ens3.network
-        content: |
-          [Match]
-          MACAddress=52:54:00:fe:b3:c0
-
-          [Network]
-          Address=203.0.113.2/24
-          Gateway=203.0.113.1
-          DNS=8.8.8.8
+hostname: replaceme_hostname_replaceme

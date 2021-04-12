@@ -1,0 +1,5 @@
+#!/bin/bash
+TMP=$(mktemp -d)
+sort keys > $TMP/keys.sorted
+diff keys $TMP/keys.sorted
+mv -i $TMP/keys.sorted keys
