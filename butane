@@ -1,0 +1,5 @@
+#!/bin/sh
+docker run \
+  -it --rm \
+  --volume ${PWD}:/pwd --workdir /pwd \
+  quay.io/coreos/butane:release -- $@
