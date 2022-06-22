@@ -2,7 +2,18 @@ variant: fcos
 version: 1.4.0
 passwd:
   users:
-    - name: core
+    - name: k
+      groups:
+        - docker
+        - wheel
+        - sudo
+      ssh_authorized_keys:
+        - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB8BJI3PYumiiw8iN7v6DV/oWkvqGpRFA1n2DTyqv9Xe thoth@flux.thalhalla.net
+    - name: coopadmin
+      groups:
+        - docker
+        - wheel
+        - sudo
       ssh_authorized_keys:
         - ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCzo1dBFbSu/5oDKhNraJPAd3X7yQl/1iDM+zHZm/HdbhVVz6P+bQ21Ciozc28lS4ARQikgoiwv+p3ic3bM4xU8= bob@MSIGS70
         - ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBD5r+hRsLgd96wZNXpjRPfcCrnTTbEvOEWt4EyHBQ7zJo+p7Tg7ig2Nb9lIVFMb2fhIUlDqL9LIqb9XAjy9ptU4= thoth@flux
@@ -42,3 +53,13 @@ passwd:
         - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOBRMcvtaeoSACeRYUQ1biY3FrPinVCEp5FsBWvsnZ09p0hG0DUiBq1LlH9Oxbid7sPtITmAwykkFqFF+jzywt8rUYoPVxWOfbBbKYr1hycaxjJT6EwdL9N58fDPiWTljeSiCKNDiTAkgHcHMGo4ugXrpn3H85RIg137NNaXx5hRpal+0XTHbmXaqIjghMnYFmgczwpGO7HSzCydvPiWy5HC1YFZIFY2oXFTIU/9ubvObud2k1JaKKOnKOImMXoXW+dV4lW5is5fOZOs651qjG375aeEZREdSsuwhhl+1wni9frATfmMa/+Qd7e+lgvOGhmaEREV5h2qOxaF9qNXxl jigsaw@jigsaw-VirtualBox
         - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCusS0joPyNC9rfc0S74cv0tnk7P/CLbmzKvSIr152tRwpzmq00G/4QrrM1l8uiGUB8crxr5SQeH3X8VkUnxLyx8KLWTvsAaANjCLGRwrOniBYOyVN6JuDfDxt0/QCoCPX/9mpizyMJIFh14Ifs7/td7UR5An+pzfzgq/rmaa+6WAAeh16VSC0P0EWJZNNV0KTAH9pFs1VjNDBCkEqJ2qppCFyJQMtmh6zJ3h2mQZXMeaMh3LvtdHLyirMC2K1Ou/PSvSskHFThxGrSTMOPX3AuaU+BVf9E5DXzhqHeu/JIbvON05ospSvgnDdoHe4MfEioV7a/C69G5myzezy18HohLuRYhktszcjJxOkKDca1RNxFAldMsN3CUXC9TC0isKE9+oG9h3Zr9yHv0DwjqlVyRXvRfkBelcSZHn/maglCcrjvlq+le7gI+wSlNcXlPC1jwBzT4smaTLZlVfTjcBF6kJxo0BRj40DK6cb/qbNMiehzJPFiE957Ntk1oipsVw8= james@phalanx
         - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDFq6ak25UDJtvtbY60CE0ZKoFIPTUYd7A2Zcyy5DCWJjB12sxmr5CvR0BmBVLjsXzU1cyQrnfTNA3SVdUXrH3EMnOJG7n3trSW3RYTOxjziIeJ6fiWS31NTU+pz+LQp/2wY5wQY4IWjZ1XHGrO/aoPvxHafIvCmsTkhyJPFkBGdX+4rv6LAY+94E1LeoKLywxUQFfJq0FvLx9f2zIHmF692bvcUbsWOtY9hkPLwY+kh3rGU8VLT4bAK2XbyBNHvrcd7tr6GXkns6FJMlprBqlLLz4FOYE8/6qbpHvxo8RExozHRO3dNrXtyq/gID8vrSB3YTb6G8ZkCIHr5kG1bbmUyBbWJwbuJCyHI4GJBhGxAeB5cVpnptToH/UrCFmqpYA0CiQAt47CwCw98TrJ+4JPgVcexGY6aB+cAI/8MzuszRfZQwktaM1aUiCKEhBlQGXw6XXKxUMFYZZkZIRUPgvb0W4rj/MVbcBVamN7wv/MiJvLt4vS1b0hfinFBlGIXAc= james@phalanx
+storage:
+  files:
+    - path: /etc/sysctl.d/20-silence-audit.conf
+      contents:
+        inline: |
+                    kernel.printk=4
+    - path: /etc/hostname
+      mode: 420
+      contents:
+        source: "data:,fcos"
